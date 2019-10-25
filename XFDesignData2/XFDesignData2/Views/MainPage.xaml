@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodels="clr-namespace:XFDesignData2.Models"
+             xmlns:models="clr-namespace:XFDesignData2.Models"
+             mc:Ignorable="d"
+             x:Class="XFDesignData2.Views.MainPage">
+
+    <d:ContentPage.BindingContext>
+        <viewmodels:MainPageViewModel />
+    </d:ContentPage.BindingContext>
+    <StackLayout>
+        <!-- Place new controls here -->
+        <Label Text="Welcome to Xamarin.Forms!" 
+           HorizontalOptions="Center"
+           VerticalOptions="CenterAndExpand" />
+        <ListView 
+            ItemsSource="{Binding mem}"
+            HasUnevenRows="False">
+            <d:ListView.ItemsSource>
+                <x:Array Type="{x:Type models:People}">
+                    <models:People Name="田中一郎" Age="25"/>
+                    <models:People Name="渡辺二郎" Age="30"/>
+                    <models:People Name="高橋三郎" Age="35"/>
+                </x:Array>
+            </d:ListView.ItemsSource>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:People">
+                    <ImageCell
+                        Text="{Binding Name}"
+                        Detail="{Binding Age}"
+                        ImageSource="{Binding Image}"
+                        d:ImageSource="icon.png"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>
