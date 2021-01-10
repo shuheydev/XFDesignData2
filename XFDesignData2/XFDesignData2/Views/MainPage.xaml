@@ -16,6 +16,7 @@
         <Label Text="Welcome to Xamarin.Forms!" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
+        <Image d:Source="icon.png" />
         <ListView 
             ItemsSource="{Binding mem}"
             HasUnevenRows="False">
